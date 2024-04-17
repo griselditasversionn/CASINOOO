@@ -272,7 +272,7 @@ function updateUserData(userId) {
     };
 
     $.ajax({
-        url: 'https://localhost:44327/api/Usuarios?id=' + loginuserId +'&puntuacion=' + puntuacion_total_acumulada,
+        url: 'https://casinoapp.bsite.net/api/Usuarios?id=' + loginuserId +'&puntuacion=' + puntuacion_total_acumulada,
         method: "PUT",
         contentType: "application/json",
         data: JSON.stringify(updateData),
