@@ -66,7 +66,7 @@
             <input type="email" id="email" placeholder="Correo electrónico" required>
             <button type="submit">Registrarse</button>
         </form>
-        <button id="back-btn" type="button">Volver</button>
+        <button id="login-btn" type="button">Login</button>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -98,9 +98,10 @@
             });
 
             // Manejador de eventos para el botón de volver
-            $("#back-btn").click(function(){
+            $("#login-btn").click(function(){
                 window.location.href = "login.html";
             });
+
         });
     </script>
 </body>

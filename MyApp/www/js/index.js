@@ -86,6 +86,7 @@ function lanzar_inicio() {
         comparar();
         // Aumentar la puntuación total acumulada después de lanzar los números en las tres ventanas
         puntuacion_total_acumulada += puntuacion_ventanas.reduce((total, puntuacion) => total + puntuacion, 0);
+        // console.log(puntuacion_total_acumulada);
         // Actualizar la visualización
         actualizar();
         actualizarPuntuacion();
@@ -107,6 +108,7 @@ function lanzar_ventanas() {
         comparar();
         // Aumentar la puntuación total acumulada
         puntuacion_total_acumulada += puntuacion_ventanas.reduce((total, puntuacion) => total + puntuacion, 0);
+        // console.log(puntuacion_total_acumulada);
         // Actualizar la visualización
         actualizar();
     }
@@ -152,6 +154,7 @@ function lanzar_uno(indice_ventana) {
         }
         // Actualizar la puntuación total acumulada
         puntuacion_total_acumulada += puntuacion_ventanas[indice_ventana];
+        // console.log(puntuacion_total_acumulada);
         // Mostrar la puntuación total acumulada
         document.getElementById("puntuacion-usuario").innerHTML = puntuacion_total_acumulada;
     }
@@ -238,31 +241,65 @@ function comparar(indice_ventana) {
 function cerrar() {
     document.getElementById("velo").style.display = "none";
 }
-function updateUserData(updateData){
+
+// Función para obtener el ID del usuario del token JWT
+function getUserIdFromCredentials(username, email) {
     $.ajax({
-      url: 'https://casinoapp.bsite.net/api/Usuarios/',
-      method: "PUT",
-      contentType: "application/json",
-      data: JSON.stringify(updateData),
-      success: function () {
-        usuario.puntuacion = puntuacion_total_acumulada;
-        // Guardar en el local storage
-        localStorage.setItem('user', JSON.stringify(usuario)); 
-      },
-      error: function (jqXHR, textStatus, errorThrown){
-        console.error("Error:", textStatus, errorThrown);
-      },
+        url: 'https://casinoapp.bsite.net/api/Usuarios/',
+        method: "GET",
+        contentType: "application/json",
+        data: JSON.stringify({ Username: username, Email: email }),
+        success: function (response) {
+            const userId = response.Id;
+            console.log('ID del usuario:', userId);
+            // Aquí puedes llamar a la función para actualizar los datos del usuario
+            updateUserData(userId);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error("Error al obtener el ID del usuario:", textStatus, errorThrown);
+        },
     });
-  }
+}
+
+// Función para actualizar los datos del usuario
+function updateUserData(userId) {
+
+    const usuario = JSON.parse(localStorage.getItem('user'));
+    const loginuserId = usuario.Id;
+
+    const updateData = {
+        Puntuacion: puntuacion_total_acumulada,
+    };
+
+    $.ajax({
+        url: 'https://localhost:44327/api/Usuarios?id=' + loginuserId +'&puntuacion=' + puntuacion_total_acumulada,
+        method: "PUT",
+        contentType: "application/json",
+        data: JSON.stringify(updateData),
+        success: function () {
+            usuario.puntuacion = puntuacion_total_acumulada;
+            console.log('Puntuación actualizada:', puntuacion_total_acumulada);
+
+            localStorage.setItem('user', JSON.stringify(usuario));
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error("Error al actualizar los datos del usuario:", textStatus, errorThrown);
+        },
+    });
+}
+
+
 function actualizarPuntuacion() {
     // Mostrar la puntuación total acumulada
     document.getElementById("puntuacion-usuario").innerHTML = puntuacion_total_acumulada;
+    // console.log(puntuacion_total_acumulada);
 
     //obtener usuario del local storage
     var usuario = JSON.parse(localStorage.getItem('user'));
     
     //verificar si la puntación es mayor a la que ya tiene el usuario
     if (usuario.Puntuacion < puntuacion_total_acumulada) {
+        // console.log(puntuacion_total_acumulada);
         // actualizar en la base de datos
         
             // Capturar los valores del formulario
@@ -270,7 +307,7 @@ function actualizarPuntuacion() {
           
             // Construir el objeto con los datos del formulario
             var formUpdateUserData = {
-                Puntuacion: puntuacion_total_acumulada
+                Puntuacion: puntuacion_total_acumulada,
               // type: userType
             };
             console.log(formUpdateUserData);

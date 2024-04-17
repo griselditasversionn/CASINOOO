@@ -104,7 +104,7 @@ function deployRecords()
 }
 function login(userData) {
     $.ajax({
-        url: "https://localhost:44327/api/users/login",
+        url: "https://casinoapp.bsite.net/api/Usuarios/Login",
         method: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(userData),

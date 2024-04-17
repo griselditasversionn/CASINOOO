@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.cordova.hellocordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HelloCordova</name>
-    <description>Sample Apache Cordova App</description>
-    <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
-        Apache Cordova Team
+    <name>Casino</name> <!--Aquí se coloca el nombre de su app -->
+    <description>Juego de casino</description> <!--Aquí se coloca la descripción de su app -->
+    <author email="" href="https://casino.bsite.net">
+        Casino Team
     </author>
-    <content src="index.html" />
+    <content src="registro.html" /> <!--Esta será la primer pantalla que vea el usuario al abrir la app -->
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <icon src="www/img/bonus.png" /> <!--Aquí se coloca el ícono de su app -->
 </widget>
