@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Metadatos -->
+        <meta charset="utf-8">
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:; connect-src *;"> -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        <!-- Hojas de estilo -->
+        <link rel="stylesheet" href="/MyApp/www/css/bootstrap/dist/css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+        <!-- Archivo de estilo personalizado -->
+        <link rel="stylesheet" href="css/index.css">
+
+        <title>CASINO</title>
+    </head>
+    <body>
+        <!-- Encabezado -->
+        <header>
+            <!-- Sección superior -->
+            <div id="Arriba">
+                <img src="./img/bonus.png" alt="">
+            </div>
+            <!-- Sección de crédito -->
+            <div id="lineal">
+                <div id="credito">Credito:</div>
+                <div id="dinero">30</div>
+                <div id="dollar">$</div>
+            </div>
+            <!-- Botón para tirar -->
+            <div id="tirar">Tirar</div>
+        </header>
+        <!-- Sección de ventanas -->
+        <section id="ventanas">
+            <!-- Ventana 1 -->
+            <div id="ventana1" class="ventana">
+                <div class="imagen">
+                    <img src="./img/moneda.png" alt="">
+                </div>   
+                <div class="boton" id="tirar_ventana1">
+                    Tirar
+                </div>
+            </div>
+            <!-- Ventana 2 -->
+            <div id="ventana2" class="ventana">
+                <div class="imagen">
+                    <img src="./img/moneda.png" alt="">
+                </div>   
+                <div class="boton" id="tirar_ventana2">
+                    Tirar
+                </div>
+            </div>
+            <!-- Ventana 3 -->
+            <div id="ventana3" class="ventana">
+                <div class="imagen">
+                    <img src="./img/moneda.png" alt="">
+                </div>   
+                <div class="boton" id="tirar_ventana3">
+                    Tirar
+                </div>
+            </div>
+        </section>        
+        
+        <!-- Sección de puntuación -->
+        <div id="puntuacion">
+            <div id="puntuacion-usuario">0</div>
+        </div>
+       <!-- Ventana emergente -->
+<div id="velo">
+    <div id="cuadro_mensaje">
+        <img id="cruz" src="./img/cruz.png" alt="">
+        <div id="mensaje">
+            <!-- Texto del mensaje -->
+            <p>GAME OVER</p>
+            <!-- Botones adicionales -->
+            <div id="botones">
+                <button onclick="window.location.href = 'login.html';">Volver al Menú</button>
+                <button onclick="window.location.href = 'scoreboard.html';">Ir a la Tabla de Puntuación</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Pie de página -->
+        <footer>
+            <i class="bi bi-info-circle-fill"></i>
+        </footer>
+        <!-- Scripts -->
+        <!-- <script src="cordova.js"></script> -->
+        <script src="./js/index.js"></script>
+        <script src="js/jquery-3.2.1.min.js"></script>
+    </body>
+</html>

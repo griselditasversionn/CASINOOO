@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Estilos CSS -->
+    <style>
+        /* Estilo para la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        /* Estilo para las celdas de encabezado y datos */
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        /* Estilo para las celdas de encabezado */
+        th {
+            background-color: #000000;
+            color: white;
+        }
+        /* Estilo para el cuerpo del documento */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(136, 1, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        /* Estilo para el contenedor */
+        .container {
+            width: 80%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div class="container">
+        <!-- Título -->
+        <h1>Tabla de Puntuación</h1>
+        <!-- Tabla para mostrar la puntuación -->
+        <table>
+            <thead>
+                <!-- Encabezado de la tabla -->
+                <tr>
+                    <th>Nombre</th>
+                    <th>Puntuación</th>
+                </tr>
+            </thead>
+            <tbody id="scoreboard-body">
+                <!-- Aquí se llenará dinámicamente con los datos de la base de datos -->
+            </tbody>
+        </table>
+        <!-- Botón para regresar al menú principal -->
+        <button onclick="returnToMenu()">Regresar al Menú</button>
+    </div>
+    <!-- Biblioteca jQuery -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script>
+         $(document).ready(function(){
+            // Realizar solicitud AJAX para obtener los datos de la tabla de puntuación
+             $.ajax({
+                 url: "https://casinoapp.bsite.net/api/Usuarios",
+                 method: 'GET',
+                 contentType: 'application/json',
+                 success: function(response) {
+                     // Llenar la tabla con los datos recibidos
+                     response.forEach(function(user) {
+                         $("#scoreboard-body").append("<tr><td>" + user.Nombre + "</td><td>" + user.Puntuacion + "</td></tr>");
+                     });
+                 },
+                 error: function(jqXHR, textStatus, errorThrown) {
+                     console.error('Error:', textStatus, errorThrown); // Manejar errores
+                 }
+             });
+         });
+
+        // Función para regresar al menú principal
+        function returnToMenu() {
+            window.location.href = "login.html"; // Redirige al usuario de nuevo al menú principal
+        }
+    </script>
+</body>
+</html>
+
+
+

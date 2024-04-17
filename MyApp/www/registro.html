@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(136, 1, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 300px;
+            text-align: center;
+            border: 4px solid #000000;
+            padding: 30px;
+            background-color: rgb(235, 170, 85);
+        }
+
+        h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #000000;
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registro de Usuario</h1>
+        <p>Por favor ingresa tu nombre de usuario y correo electrónico</p>
+        <form id="registration-form">
+            <input type="text" id="username" placeholder="Nombre de usuario" required>
+            <input type="email" id="email" placeholder="Correo electrónico" required>
+            <button type="submit">Registrarse</button>
+        </form>
+        <button id="back-btn" type="button">Volver</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Función para crear un nuevo usuario
+        function createUser(userData) {
+            $.ajax({
+                url: 'https://casinoapp.bsite.net/api/Usuarios',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(userData),
+                success: function(response) {
+                    alert("Usuario creado correctamente");
+                    window.location.href = "login.html";
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('Error:', textStatus, errorThrown);
+                    alert("Error al registrar usuario. Por favor, inténtalo de nuevo.");
+                }
+            });   
+        }
+
+        $(document).ready(function(){
+            // Manejador de eventos para el formulario de registro
+            $("#registration-form").submit(function(e){
+                e.preventDefault(); // Evitar el envío del formulario por defecto
+                var username = $("#username").val(); // Obtener el nombre de usuario
+                var email = $("#email").val(); // Obtener el correo electrónico
+                createUser({ nombre: username, correo: email });
+            });
+
+            // Manejador de eventos para el botón de volver
+            $("#back-btn").click(function(){
+                window.location.href = "login.html";
+            });
+        });
+    </script>
+</body>
+</html>
+
+

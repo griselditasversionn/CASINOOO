@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reglas del Juego</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        /* Estilo para el botón "Siguiente" */
+        #boton-siguiente, #boton-jugar {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #boton-siguiente:hover, #boton-jugar:hover {
+            opacity: 0.8;
+        }
+        /* Estilo para la ventana emergente */
+        #ventana-emergente {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 9999;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+        }
+        #cerrar-ventana {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        #imagen-explicativa {
+            width: 50px;
+            height: auto;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Reglas del Juego</h1>
+    </header>
+    <main>
+        <section id="reglas">
+            <h2>Reglas</h2>
+            <p>¡Bienvenido al emocionante juego de tragamonedas! Aquí están las reglas básicas que debes seguir para jugar:</p>
+            <ul>
+                <li>Por cada tirada, se te restará una moneda de tu saldo.</li>
+                <li>La cantidad de monedas que obtengas dependerá del tipo de fruta o moneda que obtengas en la tirada.</li>
+                <li>Si obtienes tres sietes en una tirada, ¡triplicarás la puntuación obtenida y luego la duplicarás de nuevo!</li>
+                <li>Cuando te queden 3 créditos o menos, pulsa en el botón grande para la tirada final.</li>
+                <!-- Puedes agregar más reglas según sea necesario -->
+            </ul>
+            <!-- Botón "Siguiente" para mostrar las explicaciones detalladas de la puntuación -->
+            <button id="boton-siguiente">Puntuaciones de frutas</button>
+        </section>
+        <section id="instrucciones">
+            <h2>Instrucciones</h2>
+            <p>Para jugar, simplemente haz clic en el botón "Tirar". Intenta obtener la mayor puntuación posible y diviértete.</p>
+        </section>
+        <!-- Botón "Jugar" para redirigir a index.html -->
+        <button id="boton-jugar" onclick="window.location.href = 'index.html'">Jugar</button>
+    </main>
+
+    <!-- Ventana emergente para mostrar las explicaciones detalladas -->
+    <div id="ventana-emergente">
+        <span id="cerrar-ventana">&times;</span>
+        <h2>Puntuación de cada fruta</h2>
+        <p>A continuación se muestra la puntuación de cada fruta o símbolo:</p>
+        <ul>
+            <li><img src="./img/7.png" alt="Siete" id="imagen-explicativa"> - 5000 puntos</li>
+            <li><img src="./img/sandia.png" alt="Sandía" id="imagen-explicativa"> - 4000 puntos</li>
+            <li><img src="./img/palta.png" alt="Palta" id="imagen-explicativa"> - 3000 puntos</li>
+            <li><img src="./img/naranja.png" alt="Naranja" id="imagen-explicativa"> - 2000 puntos</li>
+            <li><img src="./img/fresa.png" alt="Fresa" id="imagen-explicativa"> - 1000 puntos</li>
+            <li><img src="./img/cereza.png" alt="Cereza" id="imagen-explicativa"> - 500 puntos</li>
+            <li><img src="./img/moneda.png" alt="Moneda" id="imagen-explicativa"> - 100 puntos + Cantidad de monedas</li>
+            <!-- Agrega más explicaciones según sea necesario -->
+        </ul>
+    </div>
+
+    <script>
+        var botonSiguiente = document.getElementById('boton-siguiente');
+        var ventanaEmergente = document.getElementById('ventana-emergente');
+        var cerrarVentana = document.getElementById('cerrar-ventana');
+
+        // Agregar un evento de clic al botón "Siguiente" para mostrar la ventana emergente
+        botonSiguiente.addEventListener('click', function() {
+            ventanaEmergente.style.display = 'block'; // Mostrar la ventana emergente
+        });
+
+        // Agregar un evento de clic al botón de cerrar ventana para ocultar la ventana emergente
+        cerrarVentana.addEventListener('click', function() {
+            ventanaEmergente.style.display = 'none'; // Ocultar la ventana emergente
+        });
+    </script>
+</body>
+</html>
+
