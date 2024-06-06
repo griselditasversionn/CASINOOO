@@ -245,7 +245,7 @@ function cerrar() {
 // Función para obtener el ID del usuario del token JWT
 function getUserIdFromCredentials(username, email) {
     $.ajax({
-        url: 'https://casinoapp.bsite.net/api/Usuarios/',
+        url: allUsers_route,
         method: "GET",
         contentType: "application/json",
         data: JSON.stringify({ Username: username, Email: email }),
@@ -272,7 +272,7 @@ function updateUserData(userId) {
     };
 
     $.ajax({
-        url: 'https://casinoapp.bsite.net/api/Usuarios?id=' + loginuserId +'&puntuacion=' + puntuacion_total_acumulada,
+        url: updateScore_route + loginuserId +'&puntuacion=' + puntuacion_total_acumulada,
         method: "PUT",
         contentType: "application/json",
         data: JSON.stringify(updateData),

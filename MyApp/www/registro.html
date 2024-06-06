@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuario</title>
+
     <style>
         /* Estilos generales */
         body {
@@ -69,11 +70,12 @@
         <button id="login-btn" type="button">Login</button>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="Controllers/routes.js"></script>
     <script>
         // Función para crear un nuevo usuario
         function createUser(userData) {
             $.ajax({
-                url: 'https://casinoapp.bsite.net/api/Usuarios',
+                url: createUser_route,
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(userData),

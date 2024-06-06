@@ -87,7 +87,7 @@ function deployRecords()
     $(document).ready(function(){
         // Realizar solicitud AJAX para obtener los datos de la tabla de puntuación
          $.ajax({
-             url: "https://casinoapp.bsite.net/api/Usuarios",
+             url: allUsers_route,
              method: 'GET',
              contentType: 'application/json',
              success: function(response) {
@@ -104,7 +104,7 @@ function deployRecords()
 }
 function login(userData) {
     $.ajax({
-        url: "https://casinoapp.bsite.net/api/Usuarios/Login",
+        url: login_route,
         method: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(userData),
